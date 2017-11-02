@@ -1,0 +1,61 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+	
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--w3.css-->
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<!--angular.js-->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+		<!--personal links-->
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<script src="scripts/ng-app.js"></script>
+	</head>
+	<body ng-app="SGmodule" ng-controller="mainCtrl">
+
+		<title>{{title}}</title>
+
+		<!--sidebar-->
+		<div class="w3-sidebar w3-white w3-border w3-bar-block w3-animate-left" style="display:none;z-index:4" id="mySidebar">
+			<!--<button class="w3-bar-item w3-button" ng-click="w3_close()">Close</button>-->
+			<a class="w3-bar-item w3-margin-left"><b>Metodo di ordinamento</b></a>
+			<hr>
+			<a ng-click="sortBy('date')" class="w3-bar-item w3-button w3-margin-left">Ordina per data</a>
+			<a ng-click="sortBy('importance')" class="w3-bar-item w3-button w3-margin-left">Ordina per importanza</a>
+		</div>
+		<div class="w3-overlay" ng-click="w3_close()" style="cursor:pointer"></div>
+		<button class="w3-button w3-xxlarge" ng-click="w3_open()" id="menuButton">&#9776;</button>
+
+		<div class="w3-overlay w3-animate-opacity" ng-click="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+		<!--main part-->
+		<div class="w3-container w3-right" style="width:100%" id="main_section">
+			<div class="w3-third" ng-repeat="x in images|orderBy:propertyName:reverse" style="height:50vh;overflow:hidden">
+				<div class="w3-margin-left w3-margin-right w3-margin-top w3-white" style="max-height:85%;overflow:hidden">
+					<img ng-src="./media/{{x.name}}" class="w3-padding w3-hover-opacity" style="width:100%" onclick="onClick(this)">
+				</div>
+				<div class="w3-container w3-margin-left w3-margin-right w3-margin-bottom w3-white" style="max-height:15%;overflow:hidden">
+					<h6>{{x.date}} <b>IMP</b> {{x.importance}}</h6>
+				</div>
+		</div>
+
+		<!--modal-->
+		<div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+			<img class="w3-modal-content w3-padding w3-margin-bottom w3-margin-top w3-display-topmiddle" id="img01" style="max-width:80%">
+		</div>
+
+	</body>
+</html>
+
+<script>
+	function onClick(element){
+		document.getElementById("img01").src=element.src;
+		document.getElementById("modal01").style.display="block";
+	}
+</script>

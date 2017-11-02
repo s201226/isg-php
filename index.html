@@ -11,22 +11,18 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
 		<!--personal links-->
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
-		<script src="scripts/ng-route.js"></script>
 		<script src="scripts/ng-app.js"></script>
 	</head>
-	<body >
+	<body ng-app="SGmodule" ng-controller="mainCtrl">
 
-		<title>Bacheca</title>
+		<title>{{title}}</title>
 
-		<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ==============================-->
-		<div ui-view></div>
+		<!--super overlay-->
+		<div onclick="location.href='main.html'" id="startOverlay">
+			<div class="w3-display-bottommiddle" style="height:64vh;text-align:center">
+				<img class="w3-round" src="./media/home.gif" style="width:80%">
+			</div>
+		</div>
+		
 	</body>
 </html>
-
-<script>
-	function onClick(element){
-		document.getElementById("img01").src=element.src;
-		document.getElementById("modal01").style.display="block";
-	}
-</script>
-
